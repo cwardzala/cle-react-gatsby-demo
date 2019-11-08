@@ -1,0 +1,54 @@
+## Person Profile
+
+<div class="page-person">
+    <h1>Jon Smith</h1>
+    <p>Company</p>
+    <div className="person-wrapper">
+        <img src="https://picsum.photos/id/0/5616/3744" alt="" class="avatar" />
+        <div class="info">
+
+
+            <ul>
+                <li></li>
+                <li>Phone</li>
+                <li>Address</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+export const query = graphql`
+    query PersonQuery($email: String!) {
+        person: staffJson(
+            email: {eq: $email}
+        ) {
+            name
+            email
+            address
+            phone
+            company
+        }
+    }
+`
+
+---
+
+## gatsby-node
+
+let result = await graphql(`{
+    allStaffJson {
+        nodes {
+            email
+        }
+    }
+}`);
+
+result.data.allStaffJson.nodes.forEach((node) => {
+    createPage({
+        path: `staff/${node.email}`,
+        component: path.resolve('./src/templates/person.js'),
+        context: {
+            email: node.email
+        }
+    });
+});

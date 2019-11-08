@@ -1,0 +1,27 @@
+.page-person {
+    margin-bottom: 3rem;
+}
+.page-person .person-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.page-person .avatar {
+    width: 300px;
+    margin-right: 1rem;
+}
+
+.page-person h1 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.page-person p {
+    margin-top: 0;
+    color: gray;
+}
+
+.page-person ul {
+    list-style: none;
+    padding: 0;
+}
